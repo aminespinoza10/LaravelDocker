@@ -30,8 +30,10 @@ DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=laravel
-DB_PASSWORD=secret
+DB_PASSWORD=your_secure_password
 ```
+
+> **Security Note**: Always use strong, unique passwords for your database credentials. Never use default passwords like 'secret' or 'password' in production environments.
 
 ### 3. Build and run with Docker Compose
 
@@ -92,8 +94,10 @@ docker run -d -p 9000:9000 laravel-app
 
 Note: For production, you'll need to:
 - Set up a separate web server (nginx) to serve the application
-- Configure a production database
+- Configure a production database with strong credentials
 - Set appropriate environment variables
+- Use HTTPS/TLS for secure connections
+- Generate a new application key using `php artisan key:generate`
 
 ## Project Structure
 

@@ -24,13 +24,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy composer files first for dependency installation
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies
+# Install PHP dependencies (without scripts as application files aren't copied yet)
 RUN composer install --optimize-autoloader --no-dev --no-interaction --no-scripts --prefer-dist
 
 # Copy the rest of the application
 COPY . .
 
-# Run post-install scripts
+# Run composer scripts that were skipped earlier
+RUN composer run-script post-autoload-dump --no-interaction || true
+
+# Optimize autoloader
 RUN composer dump-autoload --optimize
 
 # Set permissions for Laravel

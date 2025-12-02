@@ -30,9 +30,10 @@ services:
     container_name: laravel-db
     restart: unless-stopped
     environment:
+      # IMPORTANT: Change these default credentials before deploying to production
       MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-secret}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-changeme_root_password}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-changeme_password}
       MYSQL_USER: ${DB_USERNAME:-laravel}
     volumes:
       - dbdata:/var/lib/mysql
