@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCATION="mexicocentral"
+LOCATION="eastus2"
 RESOURCE_GROUP="laravel-rg"
 MYSQL_USERNAME="leonadmin"
 MYSQL_PASSWORD="tu password aquí"
@@ -56,7 +56,7 @@ az containerapp up \
     --image soyleonsandboxacr.azurecr.io/laravel-app:local \
     --cpu 0.5 \
     --memory 1Gi \
-    --port 80 \
+    --port 8080 \
     --registry-server soyleonsandboxacr.azurecr.io \
     --registry-username $ACR_USERNAME \
     --registry-password $ACR_KEY \
